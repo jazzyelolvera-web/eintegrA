@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="ReIntegra: propuesta de negocio inclusivo basada en economía circular, recuperación de materiales y oportunidades laborales.">
+<title>ReIntegra | Economía circular e inclusión</title>
+<style>
+:root{
+ --navy:#10231c; --green:#176b4b; --green2:#0f5139; --mint:#eaf4ef;
+ --cream:#f7f8f5; --white:#fff; --text:#17211c; --muted:#53615a;
+ --line:#d6dfda; --gold:#b68b35; --focus:#1759a6;
+ --shadow:0 12px 35px rgba(16,35,28,.09); --radius:20px; --fs:17px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;font-size:var(--fs)}
+body{margin:0;background:var(--cream);color:var(--text);font-family:Arial,Helvetica,sans-serif;line-height:1.65}
+body.contrast{--cream:#000;--white:#000;--navy:#000;--text:#fff;--muted:#fff;--line:#fff;--green:#5cffad;--green2:#5cffad;--mint:#111;--focus:#ffe900;--gold:#ffe900;--shadow:none}
+body.large{--fs:21px}
+body.motion *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+a{color:var(--green2);font-weight:700}
+button,a{outline-offset:4px}
+button:focus-visible,a:focus-visible{outline:3px solid var(--focus)}
+.skip{position:absolute;left:12px;top:-60px;background:#fff;color:#111;padding:12px 16px;border-radius:8px;z-index:999}
+.skip:focus{top:12px}
+.topbar{background:var(--navy);color:#fff;font-size:.85rem}
+.topbar-inner{max-width:1180px;margin:auto;padding:8px 20px;display:flex;justify-content:space-between;gap:15px}
+header{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.96);border-bottom:1px solid var(--line)}
+.contrast header{background:#000}
+.nav{max-width:1180px;margin:auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:22px}
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none;color:var(--text)}
+.brandmark{width:42px;height:42px;border-radius:12px;background:var(--green);display:grid;place-items:center;color:#fff;font-weight:900}
+.brand strong{font-size:1.3rem;letter-spacing:.02em}
+.navlinks{display:flex;list-style:none;margin:0;padding:0;gap:20px}
+.navlinks a{text-decoration:none;color:var(--text);font-size:.9rem}
+.controls{display:flex;gap:6px;flex-wrap:wrap}
+.ctrl{border:1px solid var(--line);background:var(--white);color:var(--text);border-radius:9px;padding:7px 9px;font-weight:700;cursor:pointer}
+.hero{background:linear-gradient(115deg,var(--navy),var(--green2));color:#fff;padding:86px 20px 78px}
+.hero-grid{max-width:1180px;margin:auto;display:grid;grid-template-columns:1.25fr .75fr;gap:60px;align-items:center}
+.kicker{font-size:.82rem;letter-spacing:.16em;text-transform:uppercase;font-weight:800;color:#cde9dc}
+h1{font-size:clamp(2.7rem,6vw,5.3rem);line-height:1.02;margin:13px 0 23px;letter-spacing:-.04em}
+h2{font-size:clamp(1.8rem,3vw,2.7rem);line-height:1.1;margin:0 0 16px;letter-spacing:-.02em}
+h3{line-height:1.2}
+.hero p{font-size:1.16rem;max-width:760px;color:#eef8f3}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.btn{display:inline-block;padding:13px 18px;border-radius:11px;text-decoration:none;font-weight:800;border:2px solid transparent}
+.primary{background:#fff;color:var(--green2)}
+.secondary{border-color:#fff;color:#fff}
+.hero-panel{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.25);border-radius:26px;padding:28px}
+.hero-panel h2{font-size:1.55rem}
+.metric{display:flex;justify-content:space-between;gap:15px;border-top:1px solid rgba(255,255,255,.22);padding:15px 0}
+.metric strong{font-size:1.4rem}
+section{padding:76px 20px}
+.container{max-width:1180px;margin:auto}
+.eyebrow{display:inline-block;color:var(--green2);font-weight:900;font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px}
+.lead{font-size:1.06rem;color:var(--muted);max-width:850px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:30px}
+.card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:27px;box-shadow:var(--shadow)}
+.card h3{margin-top:0;font-size:1.25rem}
+.number{font-size:.8rem;color:var(--green2);font-weight:900;letter-spacing:.12em}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:30px}
+.highlight{background:var(--mint);border-radius:var(--radius);padding:30px;border:1px solid var(--line)}
+.highlight blockquote{font-size:1.4rem;line-height:1.35;margin:0;font-weight:700}
+.steps{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:30px}
+.step{background:var(--white);border:1px solid var(--line);border-radius:15px;padding:18px;text-align:center}
+.step span{display:block;color:var(--green2);font-weight:900;font-size:.8rem;margin-bottom:8px}
+.step strong{display:block}
+.band{background:var(--mint)}
+.income{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:30px}
+.price{font-size:1.7rem;font-weight:900;color:var(--green2)}
+.timeline{display:grid;gap:12px;margin-top:28px}
+.phase{display:grid;grid-template-columns:150px 1fr;gap:20px;background:var(--white);border:1px solid var(--line);padding:20px;border-radius:15px}
+.phase b{color:var(--green2)}
+.pour-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:30px}
+.pour{background:var(--white);border:2px solid var(--line);border-radius:20px;padding:28px}
+.tag{display:inline-block;background:var(--green);color:#fff;padding:5px 10px;border-radius:999px;font-size:.78rem;font-weight:900}
+.pour ul{padding-left:1.2rem}
+.pour li{margin:.55rem 0}
+.table-wrap{overflow:auto;margin-top:25px}
+table{border-collapse:collapse;width:100%;min-width:700px;background:var(--white)}
+th,td{border:1px solid var(--line);padding:13px;text-align:left;vertical-align:top}
+th{background:var(--mint)}
+.cta{background:var(--navy);color:#fff}
+.cta .lead{color:#d9e5df}
+footer{background:#09120e;color:#e6eee9;padding:38px 20px}
+.footer{max-width:1180px;margin:auto;display:grid;grid-template-columns:2fr 1fr;gap:30px}
+footer a{color:#b9efd5}
+.small{font-size:.88rem}
+@media(max-width:900px){
+ .hero-grid,.split,.footer{grid-template-columns:1fr}
+ .grid3,.income{grid-template-columns:1fr 1fr}
+ .steps{grid-template-columns:repeat(3,1fr)}
+ .navlinks{display:none}
+}
+@media(max-width:600px){
+ .topbar-inner{flex-direction:column}
+ .nav{align-items:flex-start;flex-direction:column}
+ .grid3,.income,.pour-grid{grid-template-columns:1fr}
+ .steps{grid-template-columns:1fr 1fr}
+ .phase{grid-template-columns:1fr}
+ section{padding:55px 16px}
+ .hero{padding:60px 16px}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#contenido">Saltar al contenido principal</a>
+
+<div class="topbar">
+ <div class="topbar-inner">
+  <span>Propuesta de sitio web accesible</span>
+  <span>Actividad 2 · Modelo de negocio inclusivo</span>
+ </div>
+</div>
+
+<header>
+ <div class="nav">
+  <a class="brand" href="#inicio" aria-label="ReIntegra, inicio">
+   <span class="brandmark" aria-hidden="true">R</span><strong>ReIntegra</strong>
+  </a>
+  <nav aria-label="Navegación principal">
+   <ul class="navlinks">
+    <li><a href="#problema">Problema</a></li>
+    <li><a href="#solucion">Solución</a></li>
+    <li><a href="#modelo">Modelo</a></li>
+    <li><a href="#impacto">Impacto</a></li>
+    <li><a href="#pour">POUR</a></li>
+   </ul>
+  </nav>
+  <div class="controls" aria-label="Opciones de accesibilidad">
+   <button class="ctrl" id="large" type="button" aria-pressed="false">Texto grande</button>
+   <button class="ctrl" id="contrast" type="button" aria-pressed="false">Alto contraste</button>
+   <button class="ctrl" id="motion" type="button" aria-pressed="false">Menos movimiento</button>
+  </div>
+ </div>
+</header>
+
+<main id="contenido">
+<section class="hero" id="inicio">
+ <div class="hero-grid">
+  <div>
+   <div class="kicker">Economía circular · Inclusión laboral</div>
+   <h1>Una segunda vida para los materiales.</h1>
+   <p>ReIntegra es un modelo de negocio inclusivo que recupera materiales aprovechables, los transforma y los comercializa mientras crea oportunidades de capacitación y participación laboral para personas que enfrentan barreras de acceso al empleo formal.</p>
+   <div class="actions">
+    <a class="btn primary" href="#modelo">Conocer el modelo</a>
+    <a class="btn secondary" href="#pour">Conocer la accesibilidad</a>
+   </div>
+  </div>
+  <aside class="hero-panel" aria-label="Resumen del proyecto">
+   <h2>La propuesta en tres dimensiones</h2>
+   <div class="metric"><span>Ambiental</span><strong>Recuperar</strong></div>
+   <div class="metric"><span>Social</span><strong>Integrar</strong></div>
+   <div class="metric"><span>Económica</span><strong>Generar valor</strong></div>
+  </aside>
+ </div>
+</section>
+
+<section id="problema">
+ <div class="container">
+  <span class="eyebrow">01 · Contexto y problema</span>
+  <h2>Un problema ambiental y social conectado</h2>
+  <p class="lead">En comunidades urbanas de México, una parte de los materiales que todavía puede aprovecharse termina como residuo. Al mismo tiempo, existen personas adultas que enfrentan barreras para incorporarse al empleo formal. ReIntegra plantea una actividad económica que vincula ambas situaciones.</p>
+  <div class="grid3">
+   <article class="card"><div class="number">PROBLEMA 01</div><h3>Materiales desaprovechados</h3><p>Objetos y materiales con posibilidad de recuperación pierden valor cuando son desechados sin separación, clasificación o transformación.</p></article>
+   <article class="card"><div class="number">PROBLEMA 02</div><h3>Barreras laborales</h3><p>Algunas personas requieren oportunidades de capacitación, experiencia y participación para fortalecer su incorporación a actividades productivas.</p></article>
+   <article class="card"><div class="number">OPORTUNIDAD</div><h3>Conectar ambos retos</h3><p>La recuperación de materiales puede convertirse en una cadena de trabajo con procesos definidos, ingresos y posibilidades de crecimiento.</p></article>
+  </div>
+ </div>
+</section>
+
+<section class="band" id="solucion">
+ <div class="container">
+  <span class="eyebrow">02 · Propuesta de valor</span>
+  <h2>Transformar residuos en valor social, ambiental y económico</h2>
+  <div class="split">
+   <div class="highlight">
+    <blockquote>“Recuperar materiales, desarrollar capacidades y crear productos que vuelvan al mercado con un propósito.”</blockquote>
+   </div>
+   <div class="card">
+    <h3>¿Qué ofrece ReIntegra?</h3>
+    <ul>
+     <li>Recuperación y clasificación de materiales aprovechables.</li>
+     <li>Procesos de reacondicionamiento y transformación.</li>
+     <li>Capacitación vinculada con las actividades productivas.</li>
+     <li>Productos y materiales con una segunda oportunidad de uso.</li>
+     <li>Colaboración con empresas, comercios y consumidores.</li>
+    </ul>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section id="modelo">
+ <div class="container">
+  <span class="eyebrow">03 · Modelo de operación</span>
+  <h2>De la recuperación a la comercialización</h2>
+  <p class="lead">El proceso se divide en etapas para mantener trazabilidad, calidad y claridad en las responsabilidades.</p>
+  <div class="steps">
+   <div class="step"><span>ETAPA 01</span><strong>Recepción</strong><p>Ingreso de materiales.</p></div>
+   <div class="step"><span>ETAPA 02</span><strong>Clasificación</strong><p>Separación por tipo y condición.</p></div>
+   <div class="step"><span>ETAPA 03</span><strong>Recuperación</strong><p>Limpieza y preparación.</p></div>
+   <div class="step"><span>ETAPA 04</span><strong>Transformación</strong><p>Reparación o conversión.</p></div>
+   <div class="step"><span>ETAPA 05</span><strong>Calidad</strong><p>Revisión del resultado.</p></div>
+   <div class="step"><span>ETAPA 06</span><strong>Comercialización</strong><p>Venta y entrega.</p></div>
+  </div>
+  <div class="grid3">
+   <article class="card"><h3>Grupo objetivo</h3><p><strong>Demográfico:</strong> adultos en edad laboral, consumidores y empresas de zonas urbanas.</p><p><strong>Psicológico:</strong> personas que buscan independencia económica, desarrollo de habilidades, consumo responsable o soluciones de economía circular.</p></article>
+   <article class="card"><h3>Interacción con usuarios</h3><p>Los usuarios podrán entregar materiales, solicitar servicios de recuperación, adquirir productos, participar en alianzas y consultar información sobre el impacto del proyecto.</p></article>
+   <article class="card"><h3>Recursos clave</h3><p>Espacio de trabajo, herramientas, materiales recuperables, personal capacitado, alianzas de suministro y canales de comercialización.</p></article>
+  </div>
+ </div>
+</section>
+
+<section class="band" id="ingresos">
+ <div class="container">
+  <span class="eyebrow">04 · Sostenibilidad financiera</span>
+  <h2>Fuentes de ingreso</h2>
+  <p class="lead">La diversificación reduce la dependencia de una sola fuente de ingreso y permite financiar operación, capacitación y expansión.</p>
+  <div class="income">
+   <article class="card"><div class="price">01</div><h3>Productos transformados</h3><p>Venta directa de productos elaborados o reacondicionados a partir de materiales recuperados.</p></article>
+   <article class="card"><div class="price">02</div><h3>Materiales clasificados</h3><p>Comercialización de materiales recuperados que puedan continuar su proceso en otras cadenas productivas.</p></article>
+   <article class="card"><div class="price">03</div><h3>Servicios empresariales</h3><p>Programas de recuperación, clasificación y manejo de materiales mediante acuerdos con organizaciones.</p></article>
+  </div>
+  <div class="card" style="margin-top:20px">
+   <h3>Uso de los ingresos</h3>
+   <p>Una parte se destina a operación y mantenimiento; otra a capacitación y desarrollo de capacidades; y otra a reinversión para ampliar infraestructura, herramientas y cobertura.</p>
+  </div>
+ </div>
+</section>
+
+<section id="impacto">
+ <div class="container">
+  <span class="eyebrow">05 · Impacto y escalabilidad</span>
+  <h2>Un crecimiento diseñado por etapas</h2>
+  <div class="timeline">
+   <div class="phase"><b>ETAPA 1<br>Local</b><div><strong>Validar el modelo.</strong><br>Operación inicial, primeros productos, capacitación y medición de costos e ingresos.</div></div>
+   <div class="phase"><b>ETAPA 2<br>Alianzas</b><div><strong>Aumentar el suministro.</strong><br>Convenios con comercios y empresas para recibir mayores volúmenes de materiales.</div></div>
+   <div class="phase"><b>ETAPA 3<br>Replicación</b><div><strong>Abrir un segundo punto.</strong><br>Replicar procesos, capacitación, control de calidad y canales de venta.</div></div>
+   <div class="phase"><b>ETAPA 4<br>Regional</b><div><strong>Extender el modelo.</strong><br>Adaptar el sistema a otras zonas manteniendo los principios de inclusión y economía circular.</div></div>
+  </div>
+  <div class="table-wrap">
+   <table>
+    <thead><tr><th>Dimensión</th><th>Resultado esperado</th><th>Indicador propuesto</th></tr></thead>
+    <tbody>
+     <tr><td>Ambiental</td><td>Mayor recuperación de materiales aprovechables.</td><td>Kilogramos recuperados y porcentaje aprovechado.</td></tr>
+     <tr><td>Social</td><td>Más oportunidades de capacitación y participación.</td><td>Personas capacitadas y participantes activos.</td></tr>
+     <tr><td>Económica</td><td>Modelo capaz de sostener su operación.</td><td>Ingresos por línea y proporción reinvertida.</td></tr>
+    </tbody>
+   </table>
+  </div>
+ </div>
+</section>
+
+<section class="band" id="pour">
+ <div class="container">
+  <span class="eyebrow">06 · Accesibilidad digital</span>
+  <h2>ReIntegra bajo la metodología POUR</h2>
+  <p class="lead">El diseño considera que las personas pueden tener diferentes capacidades, dispositivos y formas de interactuar con un sitio web.</p>
+  <div class="pour-grid">
+   <article class="pour"><span class="tag">P · PERCEPTIBLE</span><h3>La información puede percibirse</h3><ul><li>Contraste suficiente entre texto y fondo.</li><li>Tipografía amplia y jerarquía visual clara.</li><li>La información esencial se comunica mediante texto.</li><li>Los elementos decorativos no dependen de su color para comunicar información.</li></ul></article>
+   <article class="pour"><span class="tag">O · OPERABLE</span><h3>La interfaz puede utilizarse</h3><ul><li>Navegación sencilla y consistente.</li><li>Enlaces y botones claramente identificados.</li><li>Posibilidad de recorrer los controles mediante teclado.</li><li>Enlace para saltar directamente al contenido principal.</li></ul></article>
+   <article class="pour"><span class="tag">U · COMPRENSIBLE</span><h3>El contenido puede entenderse</h3><ul><li>Lenguaje directo y organizado.</li><li>Títulos que explican el contenido de cada sección.</li><li>Menú predecible y estructura consistente.</li><li>Se evita sobrecargar al usuario con información innecesaria.</li></ul></article>
+   <article class="pour"><span class="tag">R · ROBUSTO</span><h3>El sitio busca ser compatible</h3><ul><li>HTML semántico y estructura lógica.</li><li>Diseño adaptable a distintos tamaños de pantalla.</li><li>Controles con nombres accesibles.</li><li>Uso de tecnologías web estándar para favorecer compatibilidad.</li></ul></article>
+  </div>
+ </div>
+</section>
+
+<section>
+ <div class="container">
+  <div class="card">
+   <span class="eyebrow">07 · Compromiso</span>
+   <h2>Diseñar para compartir oportunidades</h2>
+   <p>ReIntegra no plantea la accesibilidad como un elemento adicional. La accesibilidad forma parte de la experiencia del usuario: permite que más personas puedan comprender el proyecto, navegar por sus contenidos y conocer las formas de participar.</p>
+  </div>
+ </div>
+</section>
+
+<section class="cta">
+ <div class="container">
+  <span class="kicker">REINTEGRA</span>
+  <h2>Recuperar. Transformar. Integrar.</h2>
+  <p class="lead">Una propuesta de negocio inclusivo orientada a convertir materiales desaprovechados en valor ambiental, social y económico.</p>
+  <a class="btn primary" href="#inicio">Volver al inicio</a>
+ </div>
+</section>
+</main>
+
+<footer>
+ <div class="footer">
+  <div>
+   <h2 style="font-size:1.45rem">ReIntegra</h2>
+   <p>Maqueta de sitio web para la Actividad 2. Modelo de negocio inclusivo.</p>
+   <p class="small">La propuesta utiliza la metodología POUR como referencia de accesibilidad.</p>
+  </div>
+  <div>
+   <h3>Referencia</h3>
+   <p><a href="https://blog.adobe.com/en/publish/2017/11/24/design-with-accessibility-in-mind-the-pour-methodology" target="_blank" rel="noopener">Smyk, A. (2017). Design With Accessibility in Mind: The POUR Methodology. Adobe Blog.</a></p>
+  </div>
+ </div>
+</footer>
+
+<script>
+function toggleClass(cls,id){
+ const b=document.body, btn=document.getElementById(id);
+ b.classList.toggle(cls);
+ btn.setAttribute("aria-pressed", b.classList.contains(cls));
+}
+document.getElementById("large").addEventListener("click",()=>toggleClass("large","large"));
+document.getElementById("contrast").addEventListener("click",()=>toggleClass("contrast","contrast"));
+document.getElementById("motion").addEventListener("click",()=>toggleClass("motion","motion"));
+</script>
+</body>
+</html>
